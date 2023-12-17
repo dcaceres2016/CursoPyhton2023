@@ -1,8 +1,41 @@
 import modulos.bd as bd
 from modulos.proceso import *
+from pyfiglet import Figlet
+import random
 
 database=None
+
+def mostrar_menu():
+    print("Bienvenidos a store DatuxTec")
+    print("1. Crear producto")
+    print("2. Listar productos")
+    print("3. Editar nombre de producto")
+    print("4. Eliminar producto")
+    print("5. Salir")
+    print("2.1 Editar título del menú usando pyfiglet")
+
+def bienvenido():
+    bienvenida_texto = "¡Bienvenido al programa!"
+    print(pyfiglet.figlet_format(bienvenida_texto))
+
+def opcion_2_1():
+    nuevo_titulo = input("Ingrese el nuevo título del menú: ")
+
+    # Obtener la lista de fuentes disponibles
+    fuentes_disponibles = Figlet().getFonts()
+
+    # Seleccionar una fuente aleatoria
+    fuente_seleccionada = random.choice(fuentes_disponibles)
+
+    # Crear una instancia de Figlet con la fuente seleccionada
+    figlet = Figlet(font=fuente_seleccionada)
+
+    # Imprimir el nuevo título del menú con la fuente seleccionada
+    titulo_formateado = figlet.renderText(nuevo_titulo)
+    print(f"\nNuevo título del menú con fuente '{fuente_seleccionada}':\n{titulo_formateado}")
+
 def main():
+    global database
     salir=False
     init=True
     while not salir:
